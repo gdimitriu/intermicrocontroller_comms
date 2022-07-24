@@ -1,5 +1,5 @@
 /*
- * I2C Master controller
+ * Serial Master controller
  * Copyright 2018 Gabriel Dimitriu
  *
  * This file is part of intermicrocontroller_comms project.
@@ -18,30 +18,47 @@
  * along with intermicrocontroller_comms; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
  */
-#include<Wire.h>
+#include <NeoSWSerial.h>
+#include <EnableInterrupt.h>
 
 char inData[20]; // Allocate some space for the string
 char inChar; // Where to store the character read
 byte index = 0; // Index into array; where to store the character
 bool isValidInput;
-bool stopFlag = false;
 
-#define SLAVE_ADDRESS 1
+#define RxD 8
+#define TxD 9
+
 /**
- * A4 to bus
- * A5 to bus
+ * D8 to D9
+ * D9 to D8
  * GND to GND Bus
  */
 
-#define BUFFER_SIZE 2
-byte messageToSlave[BUFFER_SIZE];
-byte messageFromSlave[255];
+#define BUFFER_SIZE 3
+char messageToSlave[BUFFER_SIZE];
+
+NeoSWSerial BTSerial(RxD, TxD);
+
+void neoSSerial1ISR() {
+    NeoSWSerial::rxISR(*portInputRegister(digitalPinToPort(RxD)));
+}
+
 
 void setup() {
   Serial.begin(9600);  
   Serial.println("MASTER");
-  
-  Wire.begin();  // Activate I2C link
+  BTSerial.begin(38400);  
+  enableInterrupt(RxD, neoSSerial1ISR, CHANGE);
+}
+
+void makeCleanup() {
+  for (index = 0; index < 20; index++)
+  {
+    inData[index] = '\0';
+  }
+  index = 0;
+  inChar ='0';
 }
 
 void loop() {
@@ -51,7 +68,6 @@ void loop() {
   Serial.println("----------------------------");
   Serial.println("MENU:" );
   Serial.println("p# Photoresistor read");
-  Serial.println("s# Request Status");
   Serial.println("----------------------------");
    do {
     for (index = 0; index < 20; index++)
@@ -82,14 +98,9 @@ void loop() {
     if (strcmp(inData,"p") == 0) {
       getPhotoresitorValue();
       isValidInput = true;
-    } else if (strcmp(inData,"s") == 0) {
-      Wire.requestFrom(SLAVE_ADDRESS,1);
-      while(!Wire.available());
-      char c = Wire.read();
-      Serial.print("Status of the slave:");
-      Serial.println(c);
-      isValidInput = true;
+      makeCleanup();
     } else {
+      makeCleanup();
       isValidInput = false;
     }
   } while( isValidInput == true );
@@ -98,20 +109,27 @@ void loop() {
 void getPhotoresitorValue() {
   messageToSlave[0]='p'; //request value
   messageToSlave[1]='#';
-  Wire.beginTransmission(SLAVE_ADDRESS);
-  Wire.write(messageToSlave,2);
-  Wire.endTransmission();
-  Wire.requestFrom(SLAVE_ADDRESS,1);
-  while(!Wire.available());
-  int nr = Wire.read();
-  Wire.requestFrom(SLAVE_ADDRESS,nr);
-  while(!Wire.available());
-  for (int i = 0;i < nr; i++) {
-    messageFromSlave[i] = Wire.read();
+  messageToSlave[2] = '\0';
+  BTSerial.print(messageToSlave);
+  makeCleanup();
+  while(inChar != '#') {
+    while( !BTSerial.available() )
+      ; // LOOP...
+    while(BTSerial.available() > 0) // Don't read unless
+                                                 // there you know there is data
+    {
+        if(index < 19) // One less than the size of the array
+        {
+            inChar = BTSerial.read(); // Read a character
+            inData[index] = inChar; // Store it
+            index++; // Increment where to write next
+            inData[index] = '\0'; // Null terminate the string
+        }
+    }
   }
-  String strData;
-  for (char c : messageFromSlave) strData += c;
-  Serial.print("Value received from slave:");
-  Serial.print(strData);
-  Serial.print(" has lenght received=");Serial.println(nr);
+  if (index > 0) {
+    inData[index-1] = '\0';
+    Serial.print("Value received from slave:");
+    Serial.println(inData);
+  }
 }
