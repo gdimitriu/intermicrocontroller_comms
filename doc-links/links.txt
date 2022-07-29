@@ -1,0 +1,14 @@
+####   nRF24L01  #####
+https://www.optimusdigital.ro/ro/ism-24-ghz/157-modul-transceiver-rf-24-ghz-cu-nrf24l01.html
+https://www.instructables.com/The-TRUTH-About-the-Nrf24L01-Transceiver/
+https://lastminuteengineers.com/nrf24l01-arduino-wireless-communication/
+
+
+#### SPI  ####
+https://forum.arduino.cc/t/syntax-question-for-spi-transfer-buffer-size/392194/12
+https://www.arduino.cc/reference/en/language/functions/communication/spi/transfer/
+https://www.sparkfun.com/news/2762
+https://roboticsbackend.com/raspberry-pi-master-arduino-uno-slave-spi-communication-with-wiringpi/
+https://circuitdigest.com/microcontroller-projects/arduino-spi-communication-tutorial
+http://www.learningaboutelectronics.com/Articles/Multiple-SPI-devices-to-an-arduino-microcontroller.php
+
