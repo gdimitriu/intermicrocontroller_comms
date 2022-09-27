@@ -1,0 +1,9 @@
+# ARDUINO
+https://www.arduino.cc/reference/en/language/functions/communication/serial/
+https://forum.arduino.cc/t/uart-connection-between-2-arduinos/148710/2
+http://projectsfromtech.blogspot.com/2013/05/arduino-serial-communication-between.html
+https://arduino.stackexchange.com/questions/23876/serial-communication-between-two-arduinos-asking-and-receiving
+https://hackaday.io/project/44140-uart-and-i2c-communications-between-uno-and-mega25
+http://fablab.ruc.dk/how-to-connect-multiple-arduino-boards/
+https://xod.io/docs/guide/uart-led-control/
+https://rubenlaguna.com/post/2008-10-15-arduino-sleep-mode-waking-up-when-receiving-data-on-the-usart/

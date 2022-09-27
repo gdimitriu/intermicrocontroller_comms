@@ -1,0 +1,31 @@
+# SPECS
+https://electronics.stackexchange.com/questions/106265/maximum-i2c-bus-length
+http://www.mosaic-industries.com/embedded-systems/sbc-single-board-computers/freescale-hcs12-9s12-c-language/instrument-control/i2c-bus-specifications
+https://www.i2c-bus.org/multimaster/
+https://learn.sparkfun.com/tutorials/i2c
+https://www.esacademy.com/en/library/technical-articles-and-documents/miscellaneous/i2c-bus/general-introduction/bus-arbitration.html
+
+# MICROCONTROlLLERS
+https://www.best-microcontroller-projects.com/i2c-tutorial.html
+http://www.robotroom.com/Atmel-AVR-TWI-I2C-Multi-Master-Problem.html
+
+# LENGTH
+https://forum.arduino.cc/t/i2c-distance/57544
+https://www.raspberrypi.org/forums/viewtopic.php?t=82049
+
+# ARDUINO
+https://www.arduino.cc/en/Tutorial/MasterWriter
+https://www.arduino.cc/en/Tutorial/MasterReader
+https://www.arduino.cc/en/Reference/WireOnReceive
+https://www.arduino.cc/en/Reference/WireRequestFrom
+https://forum.arduino.cc/t/can-a-i2c-multi-master-system-work-without-problems/492720
+https://forum.arduino.cc/t/understanding-wire-requestfrom-timing/152773
+https://www.instructables.com/Communicating-With-Two-Arduinos/
+https://www.instructables.com/id/Aduino-IC-2-Way-Communication/
+https://electronics.stackexchange.com/questions/25278/how-to-connect-multiple-i2c-interface-devices-into-a-single-pin-a4-sda-and-a5
+https://cyclicredundancy.wordpress.com/2013/03/07/passing-serial-data-over-i2c-between-two-arduinos/
+
+
+
+
+

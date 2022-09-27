@@ -1,0 +1,13 @@
+# arduino
+https://forum.arduino.cc/t/syntax-question-for-spi-transfer-buffer-size/392194
+https://www.arduino.cc/reference/en/language/functions/communication/spi/transfer/
+https://circuitdigest.com/microcontroller-projects/arduino-spi-communication-tutorial
+http://www.learningaboutelectronics.com/Articles/Multiple-SPI-devices-to-an-arduino-microcontroller.php 
+https://www.arduino.cc/en/Reference/SPI
+
+# raspberry pi/zero
+https://roboticsbackend.com/raspberry-pi-master-arduino-uno-slave-spi-communication-with-wiringpi/
+https://www.sigmdel.ca/michel/ha/rpi/spi_on_pi_en.html
+
+## save buffer
+https://www.sparkfun.com/news/2762

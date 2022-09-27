@@ -1,0 +1,8 @@
+####   nRF24L01  #####
+https://www.optimusdigital.ro/ro/ism-24-ghz/157-modul-transceiver-rf-24-ghz-cu-nrf24l01.html
+https://www.instructables.com/The-TRUTH-About-the-Nrf24L01-Transceiver/
+https://lastminuteengineers.com/nrf24l01-arduino-wireless-communication/
+
+
+
+

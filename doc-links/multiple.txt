@@ -1,0 +1,3 @@
+# ARDUINO
+http://www.zonnepanelen.wouterlood.com/arduino-bare-basics/arduino-passing-temperature-readings-to-a-neighbor-arduino-three-ways-of-serial-communication/
+ 
