@@ -33,7 +33,9 @@ int main() {
 	
 	volatile bool isWaitingForData = false;
 	char c[20];
-	scanf("%s", &c);
+	printf("Starting MASTER\n");
+	fflush(stdout);
+	scanf("%s", c);
 	fflush(stdin);
 	printf("Receiving start command=%s\n",c);
 	fflush(stdout);
@@ -45,7 +47,7 @@ int main() {
 		if (!isWaitingForData) {
 			printf("Input Command\n");
 			fflush(stdout);
-			scanf("%s",&buffer);
+			scanf("%s", buffer);
 			fflush(stdin);
 			printf("received: <<%s>>\n",buffer);
 			fflush(stdout);

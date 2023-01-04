@@ -31,7 +31,7 @@ int main() {
 		if (!isWaitingForData) {
 			printf("Input Command\n");
 			fflush(stdout);
-			scanf("%s",&buffer);
+			scanf("%s", buffer);
 			fflush(stdin);
 			printf("received: %s\n",buffer);
 			fflush(stdout);
