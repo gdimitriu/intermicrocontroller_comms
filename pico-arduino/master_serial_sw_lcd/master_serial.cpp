@@ -77,6 +77,8 @@ int main() {
 	char ch;
 	char *str;
 	char c[20];
+	printf("Starting\n");
+	fflush(stdout);
 	scanf("%s", c);
 	fflush(stdin);
 	printf("Receiving start command=%s\n",c);
@@ -108,13 +110,16 @@ int main() {
 				display->charBounds(ch, &x, &y, &minx, &miny, &maxx, &maxy, font);
 				display->drawChar(x,y,ch,display->colour565(255,0,0), font);
 			}
-			if (buffer[0] != 'p' || buffer[1] != '#') {
-				printf("Received wrong command\n");
-				fflush(stdout);
-				continue;
+			if (buffer[0] == 'p' && buffer[1] == '#') {
+				uart_tx_program_puts(pioTX, smTX, buffer);
+				isWaitingForData = true;
+			} else if (buffer[0] =='r' && buffer[1] == '#') {
+				delete display;
+				display = new ILI934X(SPI_PORT, PIN_CS, PIN_DC, PIN_RST, 240, 320, R90DEG);
+				display->reset();
+				display->init();
+				display->clear();
 			}
-			uart_tx_program_puts(pioTX, smTX, buffer);
-			isWaitingForData = true;
 		} else {
 			char readed = uart_rx_program_getc(pioRX, smRX);
 			buffer[index] = readed;
