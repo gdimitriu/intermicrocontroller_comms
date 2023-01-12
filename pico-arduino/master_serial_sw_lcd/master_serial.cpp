@@ -95,7 +95,7 @@ int main() {
 			fflush(stdin);			
 			printf("received: <<%s>>\n",buffer);
 			fflush(stdout);
-			sprintf(lcdBuffer,"received: <<%s>>\n",buffer);
+			sprintf(lcdBuffer,"received: <<%s>>",buffer);
 			str = lcdBuffer;
 			x = 10;
 			y = 100;
