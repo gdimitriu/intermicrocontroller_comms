@@ -89,12 +89,14 @@ class SerialRxTx:
         )
         self.sm_rx.active(1)
 
-    def put(self,value):
+    def put(self, value):
         for s in value:
             self.sm_tx.put(s)
 
-    def readline(self, buffer=1024):
+    def readline(self):
         val = chr(self.sm_rx.get() >> 24)
+        while val == "\n" or val == "\r" or not val.isalpha():
+            val = chr(self.sm_rx.get() >> 24)
         retval = val
         while val != "#":
             val = chr(self.sm_rx.get() >> 24)
